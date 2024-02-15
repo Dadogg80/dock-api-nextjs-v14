@@ -1,5 +1,5 @@
 import { apiPost } from "@/lib/actions/api-post";
-import type { Credential } from "@/types/dock";
+import type { CredentialPayload, Credential } from "@/types/dock";
 
 /**
  * Creates a credential with the provided credential data and issuer.
@@ -8,13 +8,13 @@ import type { Credential } from "@/types/dock";
  * @returns A Promise that resolves to the credential data.
  */
 export async function createCredential(
-  credential: Credential
-): Promise<Credential> {
-  const wrapped = { credential: credential };
+  credential: CredentialPayload
+): Promise<any> {
+  const wrapped = { credential };
 
   return await apiPost({
     relativeUrl: "credentials/",
-    body: wrapped,
+    body: credential,
   });
 }
 

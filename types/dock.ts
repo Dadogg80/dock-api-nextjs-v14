@@ -34,7 +34,7 @@ export interface JobResult {
   };
 }
 
-export type Issuer = {
+/* export type Issuer = {
   name: string;
   image: string;
   did: string;
@@ -43,10 +43,7 @@ export type Issuer = {
 export type DidDock = `did:dock:${string}`;
 
 type SubjectObject = { id: string } & Record<string, any>;
-/**
- * This is a schema that represents a credential format expected by API caller when issuing a credential.
- *
- */
+
 export type Credential = {
   id?: string;
   context?: Array<string | object>;
@@ -57,4 +54,43 @@ export type Credential = {
   issuanceDate?: string;
   expirationDate?: string;
   status?: object | string;
+};
+ */
+
+export type Issuer = {
+  id: string;
+  name: string;
+  description: string;
+  logo: string;
+};
+
+export type DidDock = `did:dock:${string}`;
+
+type SubjectObject = { id: string } & Record<string, any>;
+
+export type Credential = {
+  id: string;
+  name?: string;
+  description?: string;
+  context?: Array<string | object>;
+  type?: Array<string> | string;
+  issuer?: Issuer;
+  subject: SubjectObject | any;
+  issuanceDate?: string;
+  expirationDate?: string;
+  status?: object | string;
+};
+
+type Alghorithm = "dockbbs+" | "ed25519";
+
+// Extended type to include additional properties from testCredential
+export type CredentialPayload = {
+  status?: object | string;
+  anchor?: boolean;
+  persist?: boolean;
+  password?: string;
+  distribute?: boolean;
+  recipientEmail?: string;
+  alghorithm?: Alghorithm;
+  credential: Credential;
 };
