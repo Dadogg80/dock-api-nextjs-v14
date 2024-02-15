@@ -13,24 +13,6 @@ import type { Credential, DidDock } from "@/types/dock";
 
 
 const issuerDid = process.env.NEXT_PUBLIC_ISSUER_DID as DidDock;
-const holderDID = process.env.NEXT_PUBLIC_RECEIVER_DID as string;
-
-
-/* const credentialToRevoke: Credential = {
-  type: ["VerifiableCredential", "ForSurBiometric"],
-  issuer: issuerDid,
-  subject: {
-    id: holderDID,
-    biometric: {
-      id: "123456",
-      created: new Date().toISOString(),
-      data: new Date().toISOString(),
-    },
-  },
-  issuanceDate: "2019-08-24T14:15:22Z",
-};
- */
-
 
 /**
  * Creates a registry, issues a credential, revokes the credential,
@@ -68,10 +50,10 @@ export const registryFlow = async () => {
 
 
   
-  // Un-Revoke credential
+  /* Un-Revoke credential
   const unrevocation = await unrevoke(registry.data.id, credential);
   if (!unrevocation)
   return console.log("registryFlow:unrevocation:error", { unrevocation });
   // Fixed - add missing await
-  await waitForJobCompletion(unrevocation.id); 
+  await waitForJobCompletion(unrevocation.id); */
 };
